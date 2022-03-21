@@ -10,7 +10,7 @@
         rel="stylesheet" 
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
         crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker-bs5.min.css">
     <style>
         .my-footer {
             height: 5em;
@@ -23,6 +23,10 @@
 
         .room-image {
             max-width: 50%;
+        }
+
+        .redText {
+            color:red;
         }
     </style>
 </head>
@@ -65,21 +69,42 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h1 class="mt-5">Search for Availability</h1>
-                <form action="reservation.html" method="GET">
+                <form action="reservation.html" method="GET" novalidate class="needs-validation">
                     <div class="row mb-3">
                         <div class="col">
                             <label for="start_date" class="form-label">Starting Date</label>
-                            <input required type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
+                            <input required type="text" class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
                             <div id="startDateHelp" class="form-text">Enter starting date in YYYY-MM-DD format</div>
                         </div>
                         <div class="col">
                             <label for="end_date" class="form-label">Ending Date</label>
-                            <input required type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
+                            <input required type="text" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
                             <div id="endDateHelp" class="form-text">Enter ending date in YYYY-MM-DD format</div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="row" id="reservation-dates">
+                                <div class="col">
+                                    <input required type="text" class="form-control" name="start">
+                                </div>
+                                <div class="col">
+                                    <input required type="text" class="form-control" name="end">  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
                     <button type="submit" class="btn btn-primary">Search Availability</button>
                 </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p id="myParagraph">This is some text</p>
+                <p>
+                    <button id="colorButton" class="btn btn-outline-secondary">Click me</button>
+                </p>
             </div>
         </div>
     </div>
@@ -108,5 +133,47 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker-full.min.js"></script>
+    <script type="text/javascript">
+        console.log("I am here");
+
+        // daterange picker for start & end date
+        const elem = document.getElementById('reservation-dates');
+        const rangePicker = new DateRangePicker(elem, {
+            // ...options
+        }); 
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            let forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+
+        
+        document.getElementById("colorButton").addEventListener("click", function() {
+            let myEl = document.getElementById("myParagraph");
+            if (myEl.classList.contains("redText")) {
+                myEl.classList.remove("redText");
+            } else {
+                myEl.classList.add("redText");
+            }
+        })
+    </script>
 </body>
 </html>

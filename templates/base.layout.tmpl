@@ -121,34 +121,6 @@
             })()
 
             
-            document.getElementById("colorButton").addEventListener("click", function() {
-                //notify("this is my message", "warning");
-
-                //notifyModal("good job", "<i>you clicked</i>", "success", "awe, that's cute");
-                //attention.toast({msg: "Hello World!", icon: "error"});
-                //attention.success({msg: "Hello World!"});
-                //attention.error({msg: "Oops..."});
-
-                let html = `
-                    <form id="check-availability-form" action="" method="post" novalidate class="needs-validation search-form">
-                        <div class="row">
-                            <div class="col">
-                                <div class="row" id="reservation-dates-modal">
-                                    <div class="col">
-                                        <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival" />
-                                    </div>
-                                    <div class="col">
-                                        <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                `
-                attention.custom({msg: html, title: "Make Reservation"});
-
-            })
-
             function notify(msg, msgType) {
                 notie.alert({
                     type: msgType,

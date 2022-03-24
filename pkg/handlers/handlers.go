@@ -60,6 +60,11 @@ func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "search-availability.page.tmpl", &models.TemplateData{})
 }
 
+// PostAvailability is the handler for the search-availability page
+func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Posted to search availability"))
+}
+
 // Contact is the handler for the contact page
 func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
